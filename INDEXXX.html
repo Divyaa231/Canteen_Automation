@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="Styleee.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header">
+      <span>Admin Panel</span>
+      <button class="menu">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Orders Section -->
+    <section id="order">
+  <h1 id="orderheader">Orders</h1>
+  <div class="orders-wrapper">
+    <table id="orders" border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Order</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <!-- Overlay for expand -->
+    <div id="expand-overlay" class="expand-overlay" style="display:none;">
+      <button id="expand-orders">Show All Orders ↓</button>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Analysis Section -->
+    <section id="analysis">
+      <h1 id="analysisheader">Analysis</h1>
+      <div id="summary" class="stats">
+        <div class="card">
+          <h3>Total Orders Today</h3>
+          <p id="total-orders">0</p>
+        </div>
+        <div class="card">
+          <h3>Total Revenue Today</h3>
+          <p id="total-revenue">₹0</p>
+        </div>
+      </div>
+      <button id="toggle-details">Show Detailed</button>
+      <div id="detailed-analysis" style="display:none;">
+        <canvas id="ordersChart"></canvas>
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

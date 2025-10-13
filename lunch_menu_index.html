@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lunch_menu_style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@600&family=Pacifico&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <a class="links" href="index.html">Home</a>
+            <a class="links" href="cart.html">Cart</a>
+            <a class="links" href="order.html">Orders</a>
+        </div>
+
+        <h1>MENU</h1>
+
+        <div class="nav-right">
+            <button id="navcart">Cart</button>
+        </div>
+    </div>
+
+    <div class="heroSection">
+        <div class="hero_cards">
+            <div id="paneer" class="food">
+                <div id="pic_paneer" class="img"></div>
+                <p id="paneerp" class="dish">Paneer Masala</p>
+                <p id="paneerc" class="cost">₹150</p>
+                <button id="paneerb" class="CartAdd" data-name="Paneer Masala" data-price="150">Add to Cart</button>
+            </div>
+
+            <div id="friedrice" class="food">
+                <div id="pic_friedrice" class="img"></div>
+                <p id="friedricep" class="dish">Fried Rice</p>
+                <p id="friedricec" class="cost">₹105</p>
+                <button id="friedriceb" class="CartAdd" data-name="friedrice" data-price="105">Add to Cart</button>
+            </div>
+
+            <div id="biryani" class="food">
+                <div id="pic_biryani" class="img"></div>
+                <p id="biryanip" class="dish">Biryani</p>
+                <p id="biryanic" class="cost">₹205</p>
+                <button id="biryanib" class="CartAdd" data-name="biryani" data-price="205">Add to Cart</button>
+            </div>
+
+            <div id="chapati" class="food">
+                <div id="pic_chapati" class="img"></div>
+                <p id="chapatip" class="dish">Chapati</p>
+                <p id="chapatic" class="cost">₹15</p>
+                <button id="chapatib" class="CartAdd" data-name="chapati" data-price="15">Add to Cart</button>
+            </div>
+
+            <div id="steamedrice" class="food">
+                <div id="pic_steamedrice" class="img"></div>
+                <p id="steamedricep" class="dish">Steamed Rice</p>
+                <p id="steamedricec" class="cost">₹25</p>
+                <button id="steamedriceb" class="CartAdd" data-name="steamedrice" data-price="25">Add to Cart</button>
+            </div>
+
+            <div id="omelette" class="food">
+                <div id="pic_omelette" class="img"></div>
+                <p id="omelettep" class="dish">Omelette</p>
+                <p id="omelettec" class="cost">₹45</p>
+                <button id="omeletteb" class="CartAdd" data-name="omelette" data-price="45">Add to Cart</button>
+            </div>
+
+            <div id="scrambledeggs" class="food">
+                <div id="pic_scrambledeggs" class="img"></div>
+                <p id="scrambledeggsp" class="dish">Scrambled Eggs</p>
+                <p id="scrambledeggsc" class="cost">₹45</p>
+                <button id="scrambledeggsb" class="CartAdd" data-name="scrambledeggs" data-price="45">Add to
+                    Cart</button>
+            </div>
+
+            <div id="sandwich" class="food">
+                <div id="pic_sandwich" class="img"></div>
+                <p id="sandwichp" class="dish">Sandwich</p>
+                <p id="sandwichc" class="cost">₹75</p>
+                <button id="sandwichb" class="CartAdd" data-name="sandwich" data-price="75">Add to Cart</button>
+            </div>
+
+            <div id="pizza" class="food">
+                <div id="pic_pizza" class="img"></div>
+                <p id="pizzap" class="dish">Pizza</p>
+                <p id="pizzac" class="cost">₹155</p>
+                <button id="pizzab" class="CartAdd" data-name="pizza" data-price="155">Add to Cart</button>
+            </div>
+
+            <div id="burger" class="food">
+                <div id="pic_burger" class="img"></div>
+                <p id="burgerp" class="dish">Burger</p>
+                <p id="burgerc" class="cost">₹145</p>
+                <button id="burgerb" class="CartAdd" data-name="burger" data-price="145">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cartbar">
+        <div class="cartbar-header">Your Cart</div>
+        <div class="cartbar-items"></div>
+    </div>
+
+    <div id="toast"></div>
+    <script src="lunch_menu_script.js"></script>
+</body>
+
+</html>

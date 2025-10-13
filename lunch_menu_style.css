@@ -1,0 +1,349 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-color: rgba(229, 73, 73, 0.125);
+
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(229, 73, 73);
+    padding: 12px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+
+.nav-left {
+    display: flex;
+    gap: 20px;
+    color: #fffefe;
+}
+
+
+.navbar h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #fdfbfb;
+}
+
+.nav-right button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 8px 19px;
+    margin-right: 35px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.nav-right button:hover {
+    background-color: #e68900;
+}
+
+.links {
+    text-decoration: none;
+    color: #f5f4f4;
+    font-weight: 500;
+}
+
+.links:hover {
+    color: #e0d0b7;
+}
+
+.food {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    margin: 15px;
+    width: 230px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.img {
+    margin-bottom: 10px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dish {
+    font-family: 'Cambria', serif;
+    color: #003049;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0 4px 0;
+}
+
+.price {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.CartAdd {
+    background-color: #ff7b54;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.CartAdd:hover {
+    background-color: #ff5722;
+    transform: scale(1.05);
+}
+
+.CartAdd:active {
+    transform: scale(0.95);
+}
+
+.hero_cards {
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+#pic_paneer {
+    background-image: url("paneer-butter-masala.jpg");
+}
+
+#pic_friedrice {
+    background-image: url("fried-rice.jpg");
+}
+
+#pic_biryani {
+    background-image: url("veg-biryani.jpg");
+}
+
+#pic_chapati {
+    background-image: url("chapati.jpg");
+}
+
+#pic_steamedrice {
+    background-image: url("Steamed-Rice.png");
+}
+
+#pic_omelette {
+    background-image: url("omelette.jpg");
+}
+
+#pic_scrambledeggs {
+    background-image: url("Egg-Bhurji.jpg");
+}
+
+#pic_sandwich {
+    background-image: url("sandwich.webp");
+}
+
+#pic_pizza {
+    background-image: url("pizza.jpg");
+}
+
+#pic_burger {
+    background-image: url("burger.webp");
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    bottom: 20px;
+    left: -300px;
+    z-index: 1000;
+    font-size: 16px;
+    transition: left 0.5s ease, visibility 0.5s;
+}
+
+#toast.show {
+    visibility: visible;
+    left: 20px;
+}
+
+
+
+.cartbar {
+    min-width: 320px;
+    max-width: 350px;
+    height: 600px;
+    background-color: rgba(104, 104, 104, 0.97);
+    color: #222;
+    border-radius: 18px 0 0 18px;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.18);
+    padding: 0 0 24px 0;
+    position: fixed;
+    top: 40px;
+    right: -400px;
+    z-index: 1000;
+    font-size: 17px;
+    transition: right 0.7s cubic-bezier(.77, 0, .18, 1), visibility 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.cartbar {
+    min-width: 250px;
+    height: 700px;
+    background-color: rgba(104, 104, 104, 0.97);
+    color: rgba(255, 0, 0, 0.861);
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    z-index: 1000;
+    font-size: 16px;
+    font-weight: 800;
+    transition: right 0.7s ease, visibility 0.5s;
+    overflow-y: auto;
+}
+
+
+.cartbar.show {
+    right: 0px;
+}
+
+.cartbar.show {
+    right: 20px;
+}
+
+.cartbar-header {
+    background: #60db65;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 18px 0 0 0;
+    padding: 20px 0 16px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.cartbar-header {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-shadow: 1px 1px 4px #333;
+}
+
+.cartbar-items {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 18px 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cartbar-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cartbar-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(96, 219, 101, 0.08);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #222;
+    border: 1px solid #e0e7ef;
+}
+
+.cartbar-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.cartbar-item.alt {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffe7c2;
+}
+
+.cartbar-empty {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.1rem;
+}
+
+.cartbar-empty {
+    color: #bbb;
+    font-style: italic;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.1rem;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #ffb400; 
+    font-size: 10px;
+    margin-bottom: 6px;
+}
+
+.rating span {
+    color: #444;
+    font-size: 14px;
+    font-weight: 500;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBite Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #e54949;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .item-info {
+      flex: 1;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .item-actions button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      background-color: rgba(229,73,73,0.2);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .item-actions button:hover {
+      background-color: #e54949;
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .item-price {
+      font-weight: 600;
+      font-size: 16px;
+      color: #444;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .cart-total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #e54949;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 25px auto 0;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 50px;
+      background-color: #e54949;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background-color: #d43c3c;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media(max-width: 600px){
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .item-actions {
+        margin-top: 10px;
+      }
+      .item-price {
+        text-align: left;
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a class="links" href="index.html">Home</a>
+        <a class="links" href="lunch_menu_index.html">Menu</a>
+        <a class="links" href="#">Cart</a>
+        <a class="links" href="order.html">Orders</a>
+      </div>
+      <div class="nav-right">
+        <!-- <a class="links" href=# onclick="openModal()">Sign-Up/in</a> -->
+        <a class="links" href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <div class="cart-container">
+      <h2>Your Cart</h2>
+
+      <div class="cart-item">
+        <img src="edly.jpg" alt="Edli Sambar">
+        <div class="item-info">Edli Sambar</div>
+        <div class="item-actions">
+          <button onclick="decreaseQty(this)">-</button>
+          <span class="qty">1</span>
+          <button onclick="increaseQty(this)">+</button>
+        </div>
+        <div class="item-price">₹30</div>
+      </div>
+
+      <div class="cart-item">
+        <img src="misal.jpg" alt="Misal Pav">
+        <div class="item-info">Misal Pav</div>
+        <div class="item-actions">
+          <button onclick="decreaseQty(this)">-</button>
+          <span class="qty">2</span>
+          <button onclick="increaseQty(this)">+</button>
+        </div>
+        <div class="item-price">₹100</div>
+      </div>
+
+      <div class="cart-item">
+        <img src="cakw.jpg" alt="Chocolate Strawberry Cake">
+        <div class="item-info">Chocolate Strawberry Cake</div>
+        <div class="item-actions">
+          <button onclick="decreaseQty(this)">-</button>
+          <span class="qty">1</span>
+          <button onclick="increaseQty(this)">+</button>
+        </div>
+        <div class="item-price">₹120</div>
+      </div>
+
+      <div class="cart-total">Total: ₹250</div>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+
+  </div>
+
+  <script>
+    function increaseQty(button){
+      const qtyElem = button.previousElementSibling;
+      qtyElem.textContent = parseInt(qtyElem.textContent) + 1;
+      updateTotal();
+    }
+
+    function decreaseQty(button){
+      const qtyElem = button.nextElementSibling;
+      if(parseInt(qtyElem.textContent) > 1){
+        qtyElem.textContent = parseInt(qtyElem.textContent) - 1;
+        updateTotal();
+      }
+    }
+
+    function updateTotal(){
+      const cartItems = document.querySelectorAll('.cart-item');
+      let total = 0;
+      cartItems.forEach(item => {
+        const price = parseInt(item.querySelector('.item-price').textContent.replace('₹',''));
+        const qty = parseInt(item.querySelector('.qty').textContent);
+        item.querySelector('.item-price').textContent = '₹' + (price/qty * qty); 
+        total += (price/qty * qty) * qty;
+      });
+      document.querySelector('.cart-total').textContent = 'Total: ₹' + total;
+    }
+
+    function checkout(){
+      alert("Thank you for your order! Proceeding to payment...");
+    }
+  </script>
+
+</body>
+</html>

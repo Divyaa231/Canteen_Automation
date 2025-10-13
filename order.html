@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBite Orders</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .orders-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #e54949;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+      transition: all 0.3s ease;
+    }
+
+    .order-item:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+
+    .order-item img.food {
+      width: 100px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .order-info {
+      flex: 1;
+      margin-left: 20px;
+    }
+
+    .order-info h4 {
+      margin: 0;
+      color: #444;
+    }
+
+    .order-info p {
+      margin: 4px 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .order-status {
+      font-weight: 600;
+      color: #e54949;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .order-status.pending {
+      color: orange;
+    }
+
+    .order-status.completed {
+      color: green;
+    }
+
+    .payment-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .payment-buttons button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pay-counter {
+      background-color: #60dfa1;
+      color: white;
+    }
+
+    .pay-online {
+      background-color: #e54949;
+      color: white;
+    }
+
+    .payment-buttons button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .order-total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #e54949;
+    }
+
+    /* QR Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 999;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      width: 250px;
+      max-width: 80%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #e54949;
+    }
+
+    @media(max-width: 600px){
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .order-status {
+        margin-top: 10px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a class="links" href="index.html">Home</a>
+        <a class="links" href="lunch_menu_index.html">Menu</a>
+        <a class="links" href="cart.html">Cart</a>
+        <a class="links" href="#">Orders</a>
+      </div>
+      <div class="nav-right">
+        <a class="links" href=# onclick="openModal()">Sign-Up/in</a>
+        <a class="links" href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <div class="orders-container">
+      <h2>Your Orders</h2>
+
+      <!-- Example Order Item -->
+      <div class="order-item" id="order1">
+        <img class="food" src="edly.jpg" alt="Edli Sambar">
+        <div class="order-info">
+          <h4>Edli Sambar</h4>
+          <p>Quantity: 1</p>
+          <p>Price: ₹30</p>
+
+          <div class="payment-buttons">
+            <button class="pay-counter" onclick="payCounter('order1')">Pay on Counter</button>
+            <button class="pay-online" onclick="showQR('order1')">Pay Online</button>
+          </div>
+        </div>
+        <div class="order-status pending" id="status-order1">Pending ⏳</div>
+      </div>
+
+      <div class="order-item" id="order2">
+        <img class="food" src="misal.jpg" alt="Misal Pav">
+        <div class="order-info">
+          <h4>Misal Pav</h4>
+          <p>Quantity: 2</p>
+          <p>Price: ₹100</p>
+
+          <div class="payment-buttons">
+            <button class="pay-counter" onclick="payCounter('order2')">Pay on Counter</button>
+            <button class="pay-online" onclick="showQR('order2')">Pay Online</button>
+          </div>
+        </div>
+        <div class="order-status pending" id="status-order2">Pending ⏳</div>
+      </div>
+
+      <div class="order-item" id="order3">
+        <img class="food" src="cakw.jpg" alt="Chocolate Cake">
+        <div class="order-info">
+          <h4>Chocolate Strawberry Cake</h4>
+          <p>Quantity: 1</p>
+          <p>Price: ₹120</p>
+
+          <div class="payment-buttons">
+            <button class="pay-counter" onclick="payCounter('order3')">Pay on Counter</button>
+            <button class="pay-online" onclick="showQR('order3')">Pay Online</button>
+          </div>
+        </div>
+        <div class="order-status pending" id="status-order3">Pending ⏳</div>
+      </div>
+
+      <div class="order-total">Total Spent: ₹250</div>
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="modal-overlay" id="qrOverlay" onclick="closeQR()"></div>
+  <div class="modal" id="qrModal">
+    <span class="close-btn" onclick="closeQR()">&times;</span>
+    <h3>Scan QR to Pay</h3>
+    <img src="QR.png"  height="90px" width="80px" alt="QR Code">
+  </div>
+
+  <script>
+    function payCounter(orderId) {
+      document.getElementById(`status-${orderId}`).textContent = "Completed ✅ (Paid on Counter)";
+      document.getElementById(`status-${orderId}`).classList.remove('pending');
+      document.getElementById(`status-${orderId}`).classList.add('completed');
+      alert("Payment successful! Please collect your order at the counter.");
+    }
+
+    function showQR(orderId) {
+      const overlay = document.getElementById('qrOverlay');
+      const modal = document.getElementById('qrModal');
+      overlay.style.display = 'block';
+      modal.style.display = 'block';
+
+      // Simulate payment completion
+      setTimeout(() => {
+        document.getElementById(`status-${orderId}`).textContent = "Completed ✅ (Paid Online)";
+        document.getElementById(`status-${orderId}`).classList.remove('pending');
+        document.getElementById(`status-${orderId}`).classList.add('completed');
+      }, 3000); // 3s after QR popup
+    }
+
+    function closeQR() {
+      document.getElementById('qrOverlay').style.display = 'none';
+      document.getElementById('qrModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
