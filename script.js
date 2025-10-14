@@ -1,3 +1,24 @@
+// Toast notification logic for Admin_INDEX.html
+function showUsernameToast() {
+  var username = localStorage.getItem("username");
+  var toast = document.getElementById("toast");
+  var toastMsg = document.getElementById("toast-msg");
+  if (username && toast && toastMsg) {
+    toastMsg.textContent = `Hi, ${username}!`;
+    toast.style.display = "flex";
+    setTimeout(function() {
+      toast.style.right = "30px";
+      toast.style.opacity = "1";
+    }, 100);
+    setTimeout(function() {
+      toast.style.right = "-400px";
+      toast.style.opacity = "0";
+      setTimeout(function() { toast.style.display = "none"; }, 600);
+    }, 3500);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", showUsernameToast);
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.querySelector("#orders tbody");
   const totalOrdersEl = document.getElementById("total-orders");

@@ -4,11 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SmartBite</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <div id="toast" style="display:none;position:fixed;top:67px;right:-400px;z-index:9999;background:linear-gradient(90deg,#d90429 80%,#ef233c 100%);color:#fff;padding:18px 38px 18px 28px;border-radius:12px;font-size:20px;box-shadow:0 4px 16px rgba(0,0,0,0.18);font-weight:600;letter-spacing:1px;transition:right 0.6s cubic-bezier(.68,-0.55,.27,1.55),opacity 0.3s;display:flex;align-items:center;gap:12px;">
+    <span style="font-size:26px;">👋</span>
+    <span id="toast-msg">Hi, username!</span>
+  </div>
   <div class="container">
     <nav class="navbar">
       <div class="nav-left">
@@ -20,7 +25,7 @@
       </div>
       <div class="nav-right">
 
-        <a class="links" href=# onclick="openModal()">Sign-Up/in</a>
+        <!-- <a class="links" href=# onclick="openModal()">Sign-Up/in</a> -->
 
 <!-- button to open modal -->
 
@@ -194,7 +199,7 @@
 <footer>
 <div>SmartBite is your digital canteen buddy – no more long queues, no more waiting. <br> Just browse, order, and enjoy your favorite meals faster than ever. Fresh food, quick service, and a smarter way to eat, all at your fingertips
 <p>+ 91 9653110478</p>
-<p>example@gmail.com</p>
+<p>SmartBites@gmail.com</p>
 </div>
 
 
@@ -202,6 +207,29 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    // Show toast with username if available, with slide-in effect
+    document.addEventListener("DOMContentLoaded", function() {
+      var username = localStorage.getItem("username");
+      if (username) {
+        var toast = document.getElementById("toast");
+        var toastMsg = document.getElementById("toast-msg");
+        if (toast && toastMsg) {
+          toastMsg.textContent = `Hi, ${username}!`;
+          toast.style.display = "flex";
+          setTimeout(function() {
+            toast.style.right = "10px";
+            toast.style.opacity = "1";
+          }, 100);
+          setTimeout(function() {
+            toast.style.right = "-400px";
+            toast.style.opacity = "0";
+            setTimeout(function() { toast.style.display = "none"; }, 600);
+          }, 3500);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
