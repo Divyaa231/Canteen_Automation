@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Overlay for blur effect */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      z-index: 0;
+    }
+
+    /* Login card with glassmorphism */
+    .login-card {
+      position: relative;
+      z-index: 1;
+      width: 380px;
+      padding: 50px 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      color: #fff;
+      animation: slideUp 1s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-card h2 {
+      font-family:cursive;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #FFD700;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    /* Input fields */
+    .login-card input {
+      width: 100%;
+      padding: 14px 20px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+      box-shadow: inset 0 0 5px rgba(255,255,255,0.2);
+    }
+
+    .login-card input::placeholder { color: #f0f0f0; }
+
+    .login-card input:focus {
+      background: rgba(255,255,255,0.4);
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Button */
+    .login-card button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(90deg, #FF6347, #FF4500);
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 4px 15px rgba(255,99,71,0.5);
+    }
+
+    .login-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255,215,0,0.6);
+    }
+
+    /* Error message */
+    .error-msg {
+      display: none;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #FF6347;
+    }
+
+    /* Floating food emojis/icons */
+    .food-icon {
+      position: absolute;
+      width: 50px;
+      opacity: 0.8;
+      animation: float 10s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(15deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2>SmartBite</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p class="error-msg" id="error-msg">Invalid username or password!</p>
+  </div>
+
+  <!-- Floating food icons -->
+  <img src="https://img.icons8.com/emoji/48/pizza-emoji.png" class="food-icon" style="top: 10%; left: 20%; animation-duration: 12s;" />
+  <img src="https://img.icons8.com/emoji/48/hamburger-emoji.png" class="food-icon" style="top: 90%; left: 20%; animation-duration: 16s;" />
+  <img src="https://img.icons8.com/emoji/48/ice-cream-emoji.png" class="food-icon" style="top: 80%; left: 90%; animation-duration: 14s;" />
+  <img src="https://img.icons8.com/emoji/48/hot-dog-emoji.png" class="food-icon" style="top: 30%; left: 75%; animation-duration: 18s;" />
+  <img src="https://img.icons8.com/emoji/48/cupcake-emoji.png" class="food-icon" style="top: 50%; left: 4%; animation-duration: 18s;" />
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-msg');
+
+      const users = {
+        student: { username: 'student', password: '1234', redirect: 'index.html' },
+        admin: { username: 'admin', password: 'admin123', redirect: 'INDEXXX.html' }
+      };
+
+      if (username === users.student.username && password === users.student.password) {
+        window.location.href = users.student.redirect;
+      } else if (username === users.admin.username && password === users.admin.password) {
+        window.location.href = users.admin.redirect;
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
