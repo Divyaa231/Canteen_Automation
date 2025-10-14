@@ -1,6 +1,8 @@
 {
   "users": [
-    { "id": 1, "username": "admin", "password": "1234" },
-    { "id": 2, "username": "student", "password":"abcd"}
+    { "id": 1, "username": "Noushad", "password": "1234" },
+    { "id": 1, "username": "Achal", "password": "1234" },
+    { "id": 1, "username": "Divya", "password": "2331" },
+    { "id": 2, "username": "Vaibhav sir", "password":"1234"}
 ]
 }
