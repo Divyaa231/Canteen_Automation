@@ -1,8 +1,8 @@
 {
   "users": [
-    { "id": 1, "username": "Noushad", "password": "1***" },
-    { "id": 1, "username": "Achal", "password": "2***" },
-    { "id": 1, "username": "Divya", "password": "2331" },
-    { "id": 2, "username": "Vaibhav sir", "password":"3***"}
+    { "id": 1, "username": "Noushad", "password": "1***", "role": "admin" },
+    { "id": 1, "username": "Achal", "password": "2***", "role": "admin" },
+    { "id": 1, "username": "Divya", "password": "2331", "role": "student" },
+    { "id": 2, "username": "Vaibhav sir", "password":"3***", "role": "admin" }
 ]
 }
